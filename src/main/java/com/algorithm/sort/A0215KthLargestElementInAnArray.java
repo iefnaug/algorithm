@@ -1,7 +1,7 @@
 package com.algorithm.sort;
 
 /**
- * 给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。
+ * 给定整数数组 nums 和整数 k，请返回数组中第k个最大的元素。
  *
  * 请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
  *
@@ -27,7 +27,43 @@ package com.algorithm.sort;
 public class A0215KthLargestElementInAnArray {
 
     public int findKthLargest(int[] nums, int k) {
-        return 0;
+        int kth = nums.length - k;
+        return quickSort(nums, 0, nums.length - 1, kth);
     }
 
+    private int quickSort(int[] nums, int left, int right, int kth) {
+        int i = left, j = right;
+        int target = nums[i];
+        if (i < j) {
+            while (i < j) {
+                while (nums[j] >= target && i < j) {
+                    j--;
+                }
+                nums[i] = nums[j];
+                while (nums[i] < target && i < j) {
+                    i++;
+                }
+                nums[j] = nums[i];
+            }
+            nums[i] = target;
+            if (i == kth) {
+                return target;
+            }
+            if (i < kth) {
+                return quickSort(nums, i + 1, right, kth);
+            } else {
+                return quickSort(nums, left, i - 1, kth);
+            }
+        }
+        return target;
+    }
+
+    public static void main(String[] args) {
+        A0215KthLargestElementInAnArray a0215KthLargestElementInAnArray = new A0215KthLargestElementInAnArray();
+        int[] nums = new int[]{
+          1,3,5,7,9,2,4,6,8,10
+        };
+        final int result = a0215KthLargestElementInAnArray.findKthLargest(nums, 2);
+        System.out.println(result);
+    }
 }
