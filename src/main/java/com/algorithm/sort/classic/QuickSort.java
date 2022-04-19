@@ -2,6 +2,7 @@ package com.algorithm.sort.classic;
 
 /**
  * 快速排序
+ * 选出一个基准数，使基准数左边的数都比基准数小，右边的数都比基准数大，然后递归
  */
 public class QuickSort {
 
