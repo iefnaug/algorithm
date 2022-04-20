@@ -10,20 +10,13 @@ public class InsertionSort {
      */
     public void sort(int[] nums) {
         for (int i = 1; i < nums.length; i++) {
-            for (int j = i - 1; j >= 0 ; j--) {
-                if (nums[i] >= nums[j]) {
-                    if (j < i - 1) {
-                        move(nums, j + 1, i - 1, nums[i]);
-                    }
-                    break;
-                }
+            int insertValue = nums[i];
+            int j = i - 1;
+            for (; j >= 0 && nums[j] > insertValue ; j--) {
+                nums[j + 1] = nums[j];
             }
+            nums[j + 1] = insertValue;
         }
-    }
-
-    private void move(int[] nums, int start, int end, int target) {
-        System.arraycopy(nums, start, nums, start + 1, end + 1 - start);
-        nums[start] = target;
     }
 
     public static void main(String[] args) {
