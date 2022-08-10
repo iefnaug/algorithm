@@ -32,7 +32,7 @@ import java.util.Set;
  * 0 <= s.length <= 5 * 104
  * s由英文字母、数字、符号和空格组成
  */
-public class LongestSubString {
+public class A0003LongestSubString {
 
     public int lengthOfLongestSubstring(String s) {
         if (s.length() == 0) {
@@ -54,7 +54,7 @@ public class LongestSubString {
     }
 
     public static void main(String[] args) {
-        LongestSubString algorithm = new LongestSubString();
+        A0003LongestSubString algorithm = new A0003LongestSubString();
         System.out.println(algorithm.lengthOfLongestSubstring("pwwkew"));
     }
 
