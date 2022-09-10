@@ -35,7 +35,7 @@ public class A0130SurroundedRegions {
     }
 
     /**
-     * 深度优先遍历
+     * 深度优先遍历 （从4条边入手）
      */
     private void dfs(char[][] board, int x, int y) {
         final int i = board.length, j = board[0].length;
