@@ -1,5 +1,6 @@
 package com.algorithm.segmenttree;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,11 +38,71 @@ import java.util.List;
  */
 public class A0315countOfSmallerNumbersAfterSelf {
 
-    /**
-     * TODO hard
-     */
     public List<Integer> countSmaller(int[] nums) {
-        return null;
+        List<Integer> countList = new ArrayList<>(nums.length);
+        for (int i = 0; i < nums.length; i++) {
+            countList.add(0);
+        }
+        int[] tmp = new int[nums.length];
+        if (nums.length < 2) {
+            return countList;
+        }
+        sort(nums, 0, nums.length - 1, tmp, countList);
+        return countList;
+    }
+
+    private void sort(int[] nums, int left, int right, int[] tmp, List<Integer> countList) {
+        if (left < right) {
+            int mid = left + (right - left) / 2;
+            sort(nums, left, mid, tmp, countList);
+            sort(nums, mid + 1, right, tmp, countList);
+            merge(nums, left, mid, right, tmp, countList);
+        }
+    }
+
+    /**
+     * TODO
+     * @param nums
+     * @param left
+     * @param mid
+     * @param right
+     * @param tmp
+     * @param countList
+     */
+    private void merge(int[] nums, int left, int mid, int right, int[] tmp, List<Integer> countList) {
+        int i = left, j = mid + 1, k = 0;
+        while (i <= mid && j <= right) {
+            if (nums[i] <= nums[j]) {
+                tmp[k++] = nums[i++];
+            } else {
+                for (int g = i; g <= mid; g++) {
+                    countList.set(g, countList.get(g) + 1);
+                }
+                tmp[k++] = nums[j++];
+            }
+        }
+        while (i <= mid) {
+            tmp[k++] = nums[i++];
+        }
+        while (j <= right) {
+            tmp[k++] = nums[j++];
+        }
+        k = 0;
+        while (left <= right) {
+            nums[left++] = tmp[k++];
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {
+//                1,5,7,8,4,6,9,10,2
+                2, 0, 1
+        };
+        A0315countOfSmallerNumbersAfterSelf algorithm = new A0315countOfSmallerNumbersAfterSelf();
+        final List<Integer> countList = algorithm.countSmaller(nums);
+        for (int i = 0; i < countList.size(); i++) {
+            System.out.println(i + ": " + countList.get(i));
+        }
     }
 
 }
