@@ -56,6 +56,25 @@ public class A1991FindMiddle {
         return -1;
     }
 
+    public int findMiddleIndex2(int[] nums) {
+        int len = nums.length;
+        if (len == 1) {
+            return 0;
+        }
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        int leftSum = 0;
+        for (int i = 0; i < len; i++) {
+            if (leftSum * 2 == sum - nums[i]) {
+                return i;
+            }
+            leftSum += nums[i];
+        }
+        return -1;
+    }
+
 
     public static void main(String[] args) {
         A1991FindMiddle algorithm = new A1991FindMiddle();
@@ -63,8 +82,10 @@ public class A1991FindMiddle {
         int []nums = {2,3,-1,8,4};
 
         int middleIndex = algorithm.findMiddleIndex(nums);
+        int middleIndex2 = algorithm.findMiddleIndex2(nums);
 
         System.out.println(middleIndex);
+        System.out.println(middleIndex2);
     }
 
 
