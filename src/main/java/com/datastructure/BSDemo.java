@@ -81,7 +81,7 @@ public class BSDemo {
     }
 
     /**
-     * @return >= target 最靠左的索引
+     * @return >= target 最靠左的插入位置索引
      */
     public int binarySearchLeftMost(int[] nums, int target) {
         int left = 0, right = nums.length - 1;
@@ -97,7 +97,7 @@ public class BSDemo {
     }
 
     /**
-     * @return <= target 最靠右的索引
+     * @return <= target 最靠右的插入位置索引
      */
     public int binarySearchRightMost(int[] nums, int target) {
         int left = 0, right = nums.length - 1;
