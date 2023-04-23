@@ -20,7 +20,7 @@ public class A0017PhoneNumber {
         if (digits.length() == 0) {
             return combinations;
         }
-        Map<Character, String> phoneMap = new HashMap<>() {{
+        Map<Character, String> phoneMap = new HashMap<Character, String>() {{
             put('2', "abc");
             put('3', "def");
             put('4', "ghi");
