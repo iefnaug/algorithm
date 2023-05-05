@@ -64,6 +64,34 @@ public class A0234PalindromeLinkedList {
         return sentinel.next;
     }
 
+    public boolean isPalindrome2(ListNode head) {
+        if (head == null) return false;
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        if (fast == null) {
+            //偶数节点
+            fast = reverse(slow);
+        } else {
+            //奇数节点
+            fast = reverse(slow.next);
+        }
+        ListNode recordNode = fast;
+        slow = head;
+        while (fast != null) {
+            if (slow.val != fast.val) {
+                return false;
+            }
+            slow = slow.next;
+            fast = fast.next;
+        }
+        //还原链表
+        reverse(recordNode);
+        return true;
+    }
+
     public static void main(String[] args) {
         ListNode n1 = new ListNode(1);
         ListNode n2 = new ListNode(2);
@@ -79,7 +107,8 @@ public class A0234PalindromeLinkedList {
         n5.next = n6;
 
         A0234PalindromeLinkedList algorithm = new A0234PalindromeLinkedList();
-        boolean palindrome = algorithm.isPalindrome(n1);
+//        boolean palindrome = algorithm.isPalindrome(n1);
+        boolean palindrome = algorithm.isPalindrome2(n1);
         System.out.println(palindrome);
     }
 
