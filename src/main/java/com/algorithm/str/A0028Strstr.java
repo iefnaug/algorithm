@@ -133,7 +133,6 @@ public class A0028Strstr {
             return -1;
 
         }
-
     }
 
 
@@ -145,7 +144,7 @@ public class A0028Strstr {
         A0028Strstr instance = new A0028Strstr();
         System.out.println(instance.strStr(a, b));
         System.out.println(instance.strStr(a, c));
-        System.out.println(instance.strStr(a, d));
+        System.out.println(KMP(a, b));
     }
 
 }
