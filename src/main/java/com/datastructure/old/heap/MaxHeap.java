@@ -1,4 +1,4 @@
-package com.datastructure.heap;
+package com.datastructure.old.heap;
 
 /**
  * @author GF

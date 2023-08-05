@@ -1,4 +1,4 @@
-package com.datastructure.linkedlist;
+package com.datastructure.old.linkedlist;
 
 /**
  * @author GF

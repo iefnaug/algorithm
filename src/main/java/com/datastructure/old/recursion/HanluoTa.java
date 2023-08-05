@@ -1,4 +1,4 @@
-package com.datastructure.recursion;
+package com.datastructure.old.recursion;
 
 import java.util.LinkedList;
 

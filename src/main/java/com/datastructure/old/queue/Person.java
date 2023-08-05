@@ -1,4 +1,4 @@
-package com.datastructure.queue;
+package com.datastructure.old.queue;
 
 /**
  * @author GF
