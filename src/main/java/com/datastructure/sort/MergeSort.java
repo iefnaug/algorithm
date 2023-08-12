@@ -41,9 +41,26 @@ public class MergeSort {
         }
     }
 
+
+    /**
+     * 非递归
+     */
+    public static <T extends Comparable<T>> void sort2(T[] g, T[] f) {
+        int len = g.length;
+        //step 子数组大小
+        for(int step = 1; step < len; step = step * 2) {
+            for (int i = 0; i < len - step; i = i + 2 * step) {
+                //i + step - 1 < len - 1
+                merge(i, i + step - 1, Math.min(i + 2 * step - 1, len - 1), g, f);
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
         Integer[] nums = {1,3,5,7,9,2,4,6,8,0};
-        sort(nums, new Integer[nums.length], 0, nums.length - 1);
+//        sort(nums, new Integer[nums.length], 0, nums.length - 1);
+        sort2(nums, new Integer[nums.length]);
         Arrays.stream(nums).forEach(System.out::println);
     }
 
