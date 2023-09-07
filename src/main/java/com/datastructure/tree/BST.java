@@ -183,6 +183,31 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
 
+    //删除最小key
+    public Key deleteMin() {
+        if (root == null) {
+            return null;
+        }
+        Node node = root;
+        while (node.left != null) {
+            node = node.left;
+        }
+        return node.key;
+    }
+
+    //删除最大key
+    public Key deleteMax() {
+        if (root == null) {
+            return null;
+        }
+        Node node = root;
+        if (node.right != null) {
+            node = node.right;
+        }
+        return node.key;
+    }
+
+
 
 
     public static void main(String[] args) {
