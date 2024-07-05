@@ -22,10 +22,10 @@ public class TreeUtils {
             TreeNode treeNode = treeNodeList.get(i);
             int leftIndex = i * 2 + 1, rightIndex = i * 2 + 2;
             if (leftIndex < len) {
-                treeNode.setLeftChild(treeNodeList.get(leftIndex));
+                treeNode.setLeft(treeNodeList.get(leftIndex));
             }
             if (rightIndex < len) {
-                treeNode.setRightChild(treeNodeList.get(rightIndex));
+                treeNode.setRight(treeNodeList.get(rightIndex));
             }
         }
         return treeNodeList.get(0);

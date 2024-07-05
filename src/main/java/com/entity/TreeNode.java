@@ -6,45 +6,45 @@ package com.entity;
  */
 public class TreeNode {
 
-    private int value;
-    private TreeNode leftChild;
-    private TreeNode rightChild;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
 
     public TreeNode() {
 
     }
 
     public TreeNode(int value) {
-        this.value = value;
+        this.val = value;
     }
 
     public TreeNode(int value, TreeNode leftChild, TreeNode rightChild) {
-        this.value = value;
-        this.leftChild = leftChild;
-        this.rightChild = rightChild;
+        this.val = value;
+        this.left = leftChild;
+        this.right = rightChild;
     }
 
-    public int getValue() {
-        return value;
+    public int getVal() {
+        return val;
     }
 
-    public void setValue(int value) {
-        this.value = value;
+    public void setVal(int val) {
+        this.val = val;
     }
 
-    public TreeNode getLeftChild() {
-        return leftChild;
+    public TreeNode getLeft() {
+        return left;
     }
 
-    public void setLeftChild(TreeNode leftChild) {
-        this.leftChild = leftChild;
+    public void setLeft(TreeNode left) {
+        this.left = left;
     }
 
-    public TreeNode getRightChild() {
-        return rightChild;
+    public TreeNode getRight() {
+        return right;
     }
 
-    public void setRightChild(TreeNode rightChild) {
-        this.rightChild = rightChild;
+    public void setRight(TreeNode right) {
+        this.right = right;
     }
 }
