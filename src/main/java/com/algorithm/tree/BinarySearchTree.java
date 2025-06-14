@@ -1,6 +1,8 @@
 package com.algorithm.tree;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 /*
  * @author GF
@@ -83,14 +85,82 @@ public class BinarySearchTree {
         n2.setLeftChild(n5);
         n2.setRightChild(n6);
 
-        preOrder(root);
+//        preOrder(root);
+//        System.out.println();
+//        middleOrder(root);
+//        System.out.println();
+//        postOrder(root);
+//        System.out.println();
+//        rangOrder(root);
+
+//        LinkedList<TreeNode> treeNodes = rangOrder2(root);
+//        System.out.println();
+
+        int[] nums = {1,3,5,7,2,4,6,8};
+        sort(nums);
         System.out.println();
-        middleOrder(root);
-        System.out.println();
-        postOrder(root);
-        System.out.println();
-        rangOrder(root);
 
     }
+
+    public static LinkedList<TreeNode> rangOrder2(TreeNode root) {
+        LinkedList<TreeNode> result = new LinkedList<>();
+        LinkedList<TreeNode> list = new LinkedList<>();
+        if (root == null) {
+            return result;
+        }
+        list.add(root);
+        while (!list.isEmpty()) {
+            TreeNode node = list.removeFirst();
+            result.add(node);
+            if (node.getLeftChild() != null) {
+                list.add(node.getLeftChild());
+            }
+            if (node.getRightChild() != null) {
+                list.add(node.getRightChild());
+            }
+        }
+        return result;
+    }
+
+    public static void preOrder(TreeNode root, List<Integer> result) {
+        if (root != null) {
+            result.add(root.getValue());
+            preOrder(root.getLeftChild());
+            preOrder(root.getRightChild());
+        }
+    }
+
+    public static void inOrder(TreeNode root, List<Integer> result) {
+        if (root != null) {
+            inOrder(root.getLeftChild(), result);
+            result.add(root.getValue());
+            inOrder(root.getRightChild(), result);
+        }
+    }
+
+    public static void postOrder(TreeNode root, List<Integer> result) {
+        if (root != null) {
+            postOrder(root.getLeftChild(), result);
+            postOrder(root.getRightChild(), result);
+            result.add(root.getValue());
+        }
+    }
+
+
+    public static void sort(int[] nums) {
+        if (nums == null) {
+            return;
+        }
+        for (int i = 0; i < nums.length - 1; i++) {
+            for (int j = 0; j < nums.length - i - 1; j++) {
+                if (nums[j] > nums[j+1]) {
+                    int tmp = nums[j];
+                    nums[j] = nums[j+1];
+                    nums[j+1] = tmp;
+                }
+            }
+        }
+    }
+
 
 }
