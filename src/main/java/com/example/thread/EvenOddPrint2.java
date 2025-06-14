@@ -1,5 +1,6 @@
 package com.example.thread;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
@@ -39,7 +40,29 @@ public class EvenOddPrint2 {
         new Thread(() -> print(true, limit)).start();
     }
 
+    private void printAB(String s) {
+        lock.lock();
+        try {
+            while (true) {
+                System.out.println(Thread.currentThread().getName() + ": " + s);
+                condition.signalAll();
+                TimeUnit.SECONDS.sleep(1);
+                condition.await();
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    private void run2() {
+        new Thread(() -> printAB("A")).start();
+        new Thread(() -> printAB("B")).start();
+    }
+
     public static void main(String[] args) {
-        new EvenOddPrint2().run(40);
+//        new EvenOddPrint2().run(40);
+        new EvenOddPrint2().run2();
     }
 }
