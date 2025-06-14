@@ -10,18 +10,12 @@ public class EvenOddPrint {
             while (num <= limit) {
                 if ((isOdd && num % 2 == 1) || (!isOdd && num % 2 == 0)) {
                     System.out.println(Thread.currentThread().getName() + ": " + num++);
-                    try {
-                        monitor.notifyAll();
-                        monitor.wait();
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                } else {
-                    try {
-                        monitor.wait();
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+                    monitor.notifyAll();
+                }
+                try {
+                    monitor.wait();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }
             monitor.notifyAll();

@@ -16,17 +16,11 @@ public class AcrossPrint {
                 if (count % n == current) {
                     System.out.println(Thread.currentThread().getName() + ": " + count++);
                     monitor.notifyAll();
-                    try {
-                        monitor.wait();
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                } else {
-                    try {
-                        monitor.wait();
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+                }
+                try {
+                    monitor.wait();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }
             monitor.notifyAll();
